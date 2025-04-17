@@ -81,13 +81,16 @@ class ComputationGraph:
         self.roll = roll
         self.depth = depth
 
+        
+
+        self.visual_graph.attr(splines="ortho", colorscheme=colorscheme, )
         self.visual_graph.attr('node',
                                 shape='box',
                                 style='rounded,filled',
                                 colorscheme="pastel25",
                                 #gradientangle="65",
                                 #fontpath = "/usr/share/fonts/truetype/liberation",
-                                fontname="Liberation Sans",
+                                #fontname="Liberation Sans",
                                 )
 
         # specs for html table, needed for node labels
