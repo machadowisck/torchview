@@ -101,7 +101,7 @@ class ComputationGraph:
         # specs for html table, needed for node labels
         self.html_config = {
             'border': 0,
-            'cell_border': 1,
+            'cell_border': 0,
             'cell_spacing': 0,
             'cell_padding': 4,
             'col_span': 2,
