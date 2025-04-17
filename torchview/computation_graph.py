@@ -68,6 +68,7 @@ class ComputationGraph:
         hide_module_functions: bool = True,
         roll: bool = True,
         depth: int | float = 3,
+        colorscheme="pastel25",
     ):
         '''
         Resets the running_node_id, id_dict when a new ComputationGraph is initialized.
@@ -81,6 +82,7 @@ class ComputationGraph:
         self.hide_module_functions = hide_module_functions
         self.roll = roll
         self.depth = depth
+        self.colorscheme=colorscheme
 
         
 
@@ -93,7 +95,7 @@ class ComputationGraph:
                                 #fontpath = "/usr/share/fonts/truetype/liberation",
                                 #fontname="Liberation Sans",
                                 )
-        colorscheme = colorscheme="pastel25"
+        colorscheme = self.colorscheme
 
         # specs for html table, needed for node labels
         self.html_config = {
@@ -391,19 +393,37 @@ class ComputationGraph:
         cell_bor = self.html_config['cell_border']
         if self.show_shapes:
             if isinstance(node, TensorNode):
+                # label = f'''<
+                #     <TABLE BORDER="{border}" CELLBORDER="{cell_bor}"
+                #     CELLSPACING="{cell_sp}" CELLPADDING="{cell_pad}">
+                #         <TR><TD>{node.name}<BR/>depth:{node.depth}</TD><TD>{node.tensor_shape}</TD></TR>
+                #     </TABLE>>'''
                 label = f'''<
                     <TABLE BORDER="{border}" CELLBORDER="{cell_bor}"
                     CELLSPACING="{cell_sp}" CELLPADDING="{cell_pad}">
-                        <TR><TD>{node.name}<BR/>depth:{node.depth}</TD><TD>{node.tensor_shape}</TD></TR>
+                        <TR><TD>{node.name}<BR/></TD><TD>{node.tensor_shape}</TD></TR>
                     </TABLE>>'''
             else:
                 input_repr = compact_list_repr(node.input_shape)
                 output_repr = compact_list_repr(node.output_shape)
+                # label = f'''<
+                #     <TABLE BORDER="{border}" CELLBORDER="{cell_bor}"
+                #     CELLSPACING="{cell_sp}" CELLPADDING="{cell_pad}">
+                #     <TR>
+                #         <TD ROWSPAN="2">{node.name}<BR/>depth:{node.depth}</TD>
+                #         <TD COLSPAN="2">{input_str}:</TD>
+                #         <TD COLSPAN="2">{input_repr} </TD>
+                #     </TR>
+                #     <TR>
+                #         <TD COLSPAN="2">{output_str}: </TD>
+                #         <TD COLSPAN="2">{output_repr} </TD>
+                #     </TR>
+                #     </TABLE>>'''
                 label = f'''<
                     <TABLE BORDER="{border}" CELLBORDER="{cell_bor}"
                     CELLSPACING="{cell_sp}" CELLPADDING="{cell_pad}">
                     <TR>
-                        <TD ROWSPAN="2">{node.name}<BR/>depth:{node.depth}</TD>
+                        <TD ROWSPAN="2">{node.name}<BR/></TD>
                         <TD COLSPAN="2">{input_str}:</TD>
                         <TD COLSPAN="2">{input_repr} </TD>
                     </TR>
@@ -413,10 +433,15 @@ class ComputationGraph:
                     </TR>
                     </TABLE>>'''
         else:
+            # label = f'''<
+            #         <TABLE BORDER="{border}" CELLBORDER="{cell_bor}"
+            #         CELLSPACING="{cell_sp}" CELLPADDING="{cell_pad}">
+            #             <TR><TD>{node.name}<BR/>depth:{node.depth}</TD></TR>
+            #         </TABLE>>'''
             label = f'''<
                     <TABLE BORDER="{border}" CELLBORDER="{cell_bor}"
                     CELLSPACING="{cell_sp}" CELLPADDING="{cell_pad}">
-                        <TR><TD>{node.name}<BR/>depth:{node.depth}</TD></TR>
+                        <TR><TD>{node.name}<BR/></TD></TR>
                     </TABLE>>'''
         return label
 
