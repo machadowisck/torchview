@@ -79,7 +79,7 @@ def creation_ops_wrapper(
         input_node = TensorNode(
             tensor=input_recorder_tensor,
             depth=current_depth,  # type: ignore[arg-type]
-            name='input-tensor' if current_depth == 0 else 'hidden-tensor',
+            name='preprocessing' if current_depth == 0 else ' ',
             context=current_context
         )
         current_context.append(input_node)  # type: ignore[attr-defined]
