@@ -15,9 +15,9 @@ from .utils import updated_dict, assert_input_type
 COMPUTATION_NODES = Union[TensorNode, ModuleNode, FunctionNode]
 
 node2color = {
-    TensorNode: "lightyellow",
-    ModuleNode: "darkseagreen1",
-    FunctionNode: "aliceblue",
+    TensorNode: "1",
+    ModuleNode: "2",
+    FunctionNode: "3",
 }
 
 # TODO: Currently, we only use directed graphviz graph since DNN are
@@ -80,6 +80,15 @@ class ComputationGraph:
         self.hide_module_functions = hide_module_functions
         self.roll = roll
         self.depth = depth
+
+        self.visual_graph.attr('node',
+                                shape='box',
+                                style='rounded,filled',
+                                colorscheme="pastel25",
+                                #gradientangle="65",
+                                #fontpath = "/usr/share/fonts/truetype/liberation",
+                                fontname="Liberation Sans",
+                                )
 
         # specs for html table, needed for node labels
         self.html_config = {
