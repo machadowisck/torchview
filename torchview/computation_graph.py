@@ -466,7 +466,7 @@ class ComputationGraph:
     def get_node_color(
         node: COMPUTATION_NODES
     ) -> str:
-        idx = str(node2color[layer_name])
+        idx = str(node2color[node])
         colorstring = f"/{colorscheme}/{idx}"
         print(colorstring)
         return colorstring
