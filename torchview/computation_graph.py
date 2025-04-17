@@ -195,7 +195,7 @@ class ComputationGraph:
             ) as cur_cont:
                 if display_nested:
                     cur_cont.attr(
-                        style='dashed', label=k.name, labeljust='l', fontsize='12'
+                        style='dashed,filled', label=k.name, labeljust='l', fontsize='12'
                     )
                     new_kwargs = updated_dict(new_kwargs, 'subgraph', cur_cont)
                 for g in v:
