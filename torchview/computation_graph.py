@@ -469,9 +469,9 @@ class ComputationGraph:
     ) -> str:
         # label = self.get_node_label(node)
         idx = str(node2color[type(node)])
-        colorstring = f"/{ComputationGraph.colorscheme}/{idx}"
+        colorstring = f"white:/{ComputationGraph.colorscheme}/{idx}"
         return colorstring
-        # return node2color[type(node)]
+        # return f"white:/{colorscheme}/{idx}"
 
     def check_node(self, node: COMPUTATION_NODES) -> None:
         assert node.node_id != 'null', f'wrong id {node} {type(node)}'
