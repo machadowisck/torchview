@@ -86,11 +86,11 @@ class ComputationGraph:
 
         
 
-        self.visual_graph.attr(splines="ortho", colorscheme=colorscheme, )
+        self.visual_graph.attr(splines="ortho", colorscheme=self.colorscheme, )
         self.visual_graph.attr('node',
                                 shape='box',
                                 style='rounded,filled',
-                                colorscheme="pastel25",
+                                colorscheme=self.colorscheme,
                                 #gradientangle="65",
                                 #fontpath = "/usr/share/fonts/truetype/liberation",
                                 #fontname="Liberation Sans",
