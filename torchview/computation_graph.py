@@ -57,6 +57,7 @@ class ComputationGraph:
         node_hierarchy dict:
             Represents nested hierarchy of ComputationNodes by nested dictionary
     '''
+    colorscheme = None
     def __init__(
         self,
         visual_graph: Digraph,
@@ -92,6 +93,7 @@ class ComputationGraph:
                                 #fontpath = "/usr/share/fonts/truetype/liberation",
                                 #fontname="Liberation Sans",
                                 )
+        colorscheme = colorscheme="pastel25"
 
         # specs for html table, needed for node labels
         self.html_config = {
@@ -439,7 +441,11 @@ class ComputationGraph:
     def get_node_color(
         node: COMPUTATION_NODES
     ) -> str:
-        return node2color[type(node)]
+        idx = str(node2color[layer_name])
+        colorstring = f"/{colorscheme}/{idx}"
+        print(colorstring)
+        return colorstring
+        # return node2color[type(node)]
 
     def check_node(self, node: COMPUTATION_NODES) -> None:
         assert node.node_id != 'null', f'wrong id {node} {type(node)}'
