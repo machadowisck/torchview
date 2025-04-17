@@ -189,14 +189,16 @@ def draw_graph(
     # visual settings from torchviz
     # seems to work visually well
     node_attr = {
-        'style': 'filled',
-        'shape': 'plaintext',
+        'style': 'rounded,filled',
+        'shape': 'box',
         'align': 'left',
         'fontsize': '10',
         'ranksep': '0.1',
         'height': '0.2',
-        'fontname': 'Linux libertine',
         'margin': '0',
+        'colorscheme':'pastel25',
+        'gradient_angle':'65',
+        
     }
 
     edge_attr = {
