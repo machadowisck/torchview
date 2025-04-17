@@ -96,6 +96,7 @@ class ComputationGraph:
                                 #fontname="Liberation Sans",
                                 )
         colorscheme = self.colorscheme
+        ComputationGraph.colorscheme = self.colorscheme
 
         # specs for html table, needed for node labels
         self.html_config = {
