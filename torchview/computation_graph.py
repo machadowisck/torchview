@@ -464,12 +464,11 @@ class ComputationGraph:
 
     @staticmethod
     def get_node_color(
-        cls,
         node: COMPUTATION_NODES
     ) -> str:
         # label = self.get_node_label(node)
         idx = str(node2color[type(node)])
-        colorstring = f"/{cls.colorscheme}/{idx}"
+        colorstring = f"/{ComputationGraph.colorscheme}/{idx}"
         return colorstring
         # return node2color[type(node)]
 
